@@ -9,7 +9,7 @@ description: How CSS is written on these sites — tokens only, no magic values.
 
 ## Spacing — the small ruler
 
-The unit is Tailwind's: `--spacing: 0.25rem` (4px). All small values — margins, paddings, gaps, font sizes — are multiples of it:
+The unit is Tailwind's: `--spacing: 0.25rem` (4px). All small values — margins, paddings, gaps, separations, control heights, font sizes — are multiples of it:
 
 ```css
 padding: calc(var(--spacing) * 4); /* 16px */
@@ -25,6 +25,17 @@ Fixed large dimensions (card widths, hero heights, content caps) never come from
 ```
 
 Pick the nearest size — a value that isn't on the ruler doesn't exist. If nothing genuinely fits, extend the scale with a new token; never inline the number.
+
+## Type — the ruler
+
+Text comes from one fixed scale of six tokens — three headings, three body — and nothing else:
+
+```
+--heading-lg  --heading-md  --heading-sm
+--body-lg     --body-md     --body-sm
+```
+
+Every piece of text uses one of these; no other `font-size` exists. The scale is responsive but *barely* — it shifts a little at breakpoints and keeps type large on mobile, never shrinking to fit. 14px is the floor: nothing, at any breakpoint, is smaller than that.
 
 ## Colors
 
